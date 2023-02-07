@@ -22,7 +22,7 @@ const SearchBar = (props) => {
   };
 
   const searchLogger = async () => {
-    let searchURL =`http://localhost:7000/loggerHome/all_logs` +
+    let searchURL =`${process.env.REACT_APP_MY_BASEURL}/loggerHome/all_logs` +
       `?` +
       (search.logId ? `logID=${search.logId}&` : "") +
       (search.actionType ? `actionType=${search.actionType}&` : "") +
