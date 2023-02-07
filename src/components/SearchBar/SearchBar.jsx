@@ -3,26 +3,30 @@ import "./SearchBar.css";
 const SearchBar = (props) => {
   const ACTIONTYPES = [
     null,
-    "ADD_EMPLOYEE",
-    "INITIATE_APPLICATION",
-    "SUBMIT_APPLICATION",
+    'DARI_REFRESH_TOKEN',
+    'DARI_APP_LOGIN',
+    'INITIATE_APPLICATION',
+    'SUBMIT_APPLICATION',
+    'ADD_EMPLOYEE'
   ];
   const APPLICATIONTYPES = [
     null,
-    "ADD_COMPANY",
-    "ADD_COMPANY_EMPLOYEE",
-    "ADD_POA",
-    "CERT_TITLE_DEED_PLOT",
-    "CERT_PROP_OWNERSHIP",
+    'CERT_TITLE_DEED_PLOT',
+    'LEASE_REGISTRATION',
+    'ADD_POA',
+    'ADD_COMPANY',
+    'ADD_COMPANY_EMPLOYEE',
+    'CERT_PROP_OWNERSHIP',
+    'LEASE_CLOSURE'
   ];
 
-  const { search, setSearch,url,setUrl } = props;
+  const { search, setSearch, url, setUrl } = props;
   const changeHandler = (e) => {
     setSearch({ ...search, [e.target.name]: e.target.value });
   };
 
   const searchLogger = async () => {
-    let searchURL =`${process.env.REACT_APP_MY_BASEURL}/loggerHome/all_logs` +
+    let searchURL = `${process.env.REACT_APP_MY_BASEURL}/loggerHome/all_logs` +
       `?` +
       (search.logId ? `logID=${search.logId}&` : "") +
       (search.actionType ? `actionType=${search.actionType}&` : "") +
@@ -30,15 +34,15 @@ const SearchBar = (props) => {
       (search.applicationId ? `applicationId=${search.applicationId}&` : "") +
       (search.fromDate ? `startDate=${search.fromDate}&` : "") +
       (search.toDate ? `endDate=${search.toDate}&` : "");
-      
-    
-      setUrl(searchURL)
-      console.log(url);
+
+
+    setUrl(searchURL)
+    console.log(url);
   };
 
-//   useEffect(() => {
-//     console.log(search);
-//   }, [search]);
+  //   useEffect(() => {
+  //     console.log(search);
+  //   }, [search]);
 
   return (
     <div className="SearchBarContainer">
@@ -129,7 +133,7 @@ const SearchBar = (props) => {
       </div>
       <div className="logIdContainer">
         <span htmlFor="" className="LogID">
-          {}
+          { }
         </span>
         <button className="searchBtn" onClick={searchLogger}>
           Search Logger
